@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 const Layout = lazy(() => import('./components/Layout'));
 const Homepage = lazy(() => import('./pages/HomePage'));
-const NftPage = lazy(() => import('./pages/NftPage'));
+const NftPage = lazy(() => import('./pages/NftPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 

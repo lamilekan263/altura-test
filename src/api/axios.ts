@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: 'https://eth-mainnet.g.alchemy.com/v2/pB0oI6Vk2oTS6uI28xwc6LJEV6frph8Y' });
+const api = axios.create({ baseURL: import.meta.env.VITE_BASE_URL });
 
 export default api
 

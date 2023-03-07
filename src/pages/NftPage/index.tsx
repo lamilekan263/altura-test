@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Pagination from "../../components/Pagination";
-import { getNftsAxios } from "../../services/nft-Service";
 import INft from "../../models/nftInterface";
 import NftList from "./NftList";
 import Modal from "./Modal";
