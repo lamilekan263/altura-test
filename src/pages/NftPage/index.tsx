@@ -50,7 +50,7 @@ const NftPage = () => {
         )
     }
     return (
-        <div className="p-3 h-screen">
+        <div className="p-3 h-full">
             <NftList currentPosts={currentPosts} openModal={openModal} />
             <Pagination postsPerPage={postsPerPage}
                 totalPosts={state?.nft?.ownedNfts.length}
