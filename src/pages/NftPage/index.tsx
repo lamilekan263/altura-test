@@ -27,13 +27,13 @@ const NftPage = () => {
         setSelectedNft(nft);
         setIsOpen(true)
     }
-   
-   
+
+
     useEffect(() => {
         if (state === null) {
             navigate('/')
         }
-        
+
     }, [state]);
 
     const indexOfLastPost = currentPage * postsPerPage;
@@ -42,9 +42,15 @@ const NftPage = () => {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
 
-
+    if (state?.nft?.ownedNfts?.length === 0) {
+        return (
+            <div className="p-3 h-screen flex items-center justify-center">
+                <h1 className="text-lg md:text-2xl font-SpaceMono">The List  are empty</h1>
+            </div>
+        )
+    }
     return (
-        <div className="p-3">
+        <div className="p-3 h-screen">
             <NftList currentPosts={currentPosts} openModal={openModal} />
             <Pagination postsPerPage={postsPerPage}
                 totalPosts={state?.nft?.ownedNfts.length}
