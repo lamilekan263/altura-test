@@ -10,7 +10,9 @@ interface INftCard {
 
 
 
-const NftCard = ({ nft, openModal }) => {
+const NftCard = ({ nft, openModal }: INftCard) => {
+    console.log(nft);
+    
 
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer  transform transition duration-500 hover:scale-110" onClick={() => openModal(nft)}>
