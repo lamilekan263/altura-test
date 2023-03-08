@@ -63,17 +63,20 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                 <section className="text-gray-700 body-font overflow-hidden text-white">
                                     <div className="container px-5 py-6 mx-auto">
                                         <div className="lg:w-4/5 mx-auto flex flex-wrap">
+                                            <div>
                                             {selectedNft?.image_original_url !== null ? (getFileFormat(selectedNft?.image_original_url) === ('.mp4' || '.mov') ? (
-
                                                 <ReactPlayerComp
                                                     imageUrl={selectedNft?.image_original_url}
                                                 />
                                             ) : (
                                                 <>
                                                     <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
-
                                                 </>
-                                            )) : (<img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />)}
+                                            )) :
+                                                (
+                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
+                                                    )}
+                                            </div>
                                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                                 <div>
                                                     <h1 className="text-white text-2xl md:text-3xl title-font font-medium ">{selectedNft?.name}</h1>
