@@ -5,6 +5,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import INft from "../../../models/nftInterface";
 import { formatImageUrl } from "../../../utils/formatImageUrl";
 import { formatDate } from "../../../utils/formatDate";
+import ReactPlayerComp from "../../../components/ReactPlayerComp";
+import { getFileFormat } from "../../../utils/getFileFormat";
 
 
 interface IModal {
@@ -22,8 +24,6 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
         window.open(selectedNft?.metadata?.external_url);
 
     };
-
-    console.log(selectedNft);
     
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -63,7 +63,17 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                 <section className="text-gray-700 body-font overflow-hidden text-white">
                                     <div className="container px-5 py-6 mx-auto">
                                         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                                            <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.metadata?.image)} alt="NFT image" />
+                                            {getFileFormat(selectedNft?.metadata?.image) === ('.mp4' || '.mov') ? (
+
+                                                <ReactPlayerComp
+                                                    imageUrl={selectedNft?.metadata?.image}
+                                                />
+                                            ) : (
+                                                <>
+                                                        <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.metadata?.image)} alt="NFT image" />
+                                                </>
+                                            )}
+                                           
                                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                                 <div>
                                                     <h1 className="text-white text-3xl title-font font-medium ">{selectedNft?.metadata?.name}</h1>

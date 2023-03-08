@@ -41,7 +41,8 @@ const NftPage = () => {
     const currentPosts = state?.nft?.ownedNfts?.filter((nft: INft) => nft?.error === undefined)?.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-
+    console.log(state?.nft);
+    
     if (state?.nft?.ownedNfts?.length === 0) {
         return (
             <div className="p-3 h-screen flex items-center justify-center">
@@ -50,7 +51,7 @@ const NftPage = () => {
         )
     }
     return (
-        <div className="p-3 h-full">
+        <div className="p-3 ">
             <NftList currentPosts={currentPosts} openModal={openModal} />
             <Pagination postsPerPage={postsPerPage}
                 totalPosts={state?.nft?.ownedNfts.length}

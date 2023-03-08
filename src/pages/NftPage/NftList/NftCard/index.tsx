@@ -1,7 +1,7 @@
+import ReactPlayerComp from '../../../../components/ReactPlayerComp'
 import INft from '../../../../models/nftInterface'
 import { formatImageUrl } from '../../../../utils/formatImageUrl'
-
-
+import { getFileFormat } from '../../../../utils/getFileFormat'
 
 interface INftCard {
     nft: INft,
@@ -9,15 +9,22 @@ interface INftCard {
 }
 
 
-
 const NftCard = ({ nft, openModal }: INftCard) => {
-    console.log(nft);
-    
 
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer  transform transition duration-500 hover:scale-110" onClick={() => openModal(nft)}>
             <div className="h-80">
-                <img className="rounded-t-lg h-full w-full" src={formatImageUrl(nft?.metadata?.image)} alt="" />
+                {getFileFormat(nft?.metadata?.image) === ('.mp4' || '.mov') ? (
+
+                    <ReactPlayerComp
+                        imageUrl={nft?.metadata?.image}
+                    />
+                ) : (
+                    <>
+                        <img className="rounded-t-lg h-full w-full" src={formatImageUrl(nft?.metadata?.image)} alt="" />
+                    </>
+                )}
+
             </div>
             <div className="p-5">
                 <a href="#">
@@ -39,7 +46,7 @@ const NftCard = ({ nft, openModal }: INftCard) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
