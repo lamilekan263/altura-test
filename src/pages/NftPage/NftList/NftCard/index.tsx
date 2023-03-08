@@ -36,12 +36,12 @@ const NftCard = ({ nft, openModal }: INftCard) => {
                         <h4>{nft?.id} </h4>
                     </div>
                     <div className="flex gap-3 flex-col">
-                        <p className="text-xs text-gray-400 font-SpaceMono">Floor Price</p>
-                        {/* <h4>{nft?.contractMetadata?.openSea?.floorPrice} </h4> */}
+                        <p className="text-xs text-gray-400 font-SpaceMono">Symbol</p>
+                        <h4 className='font-SpaceMono'>{nft?.asset_contract.symbol}</h4>
                     </div>
                     <div className="flex gap-3 flex-col">
                         <p className="text-xs text-gray-400 font-SpaceMono">Token Type</p>
-                        {/* <h4 className='font-SpaceMono'>{nft?.contractMetadata.tokenType}</h4> */}
+                        <h4 className='font-SpaceMono'>{nft?.asset_contract.schema_name}</h4>
                     </div>
                 </div>
             </div>

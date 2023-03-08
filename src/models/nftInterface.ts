@@ -12,7 +12,11 @@ created_date : string
     permalink: string,
     name: string,
     external_link: string,
-    id: string
+    id: string,
+    asset_contract: {
+        schema_name: string,
+        symbol: string
+    }
 }
 
 
