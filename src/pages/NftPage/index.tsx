@@ -38,7 +38,7 @@ const NftPage = () => {
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = state?.nft?.assets?.filter((nft: INft) => nft?.error === undefined)?.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = state?.nft?.assets?.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
 

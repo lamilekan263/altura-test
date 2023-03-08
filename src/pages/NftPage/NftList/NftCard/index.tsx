@@ -27,21 +27,21 @@ const NftCard = ({ nft, openModal }: INftCard) => {
             </div>
             <div className="p-5">
                 <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold font-WorkSans tracking-tight text-gray-900 dark:text-white">{nft?.metadata?.name}</h5>
+                    <h5 className="mb-2 text-2xl font-bold font-WorkSans tracking-tight text-gray-900 dark:text-white">{nft?.name}</h5>
                 </a>
                 {/* price */}
                 <div className="flex justify-between text-white my-3">
                     <div className="flex gap-3 flex-col">
+                        <p className="text-xs text-gray-400 font-SpaceMono">ID</p>
+                        <h4>{nft?.id} </h4>
+                    </div>
+                    <div className="flex gap-3 flex-col">
                         <p className="text-xs text-gray-400 font-SpaceMono">Floor Price</p>
-                        <h4>{nft?.contractMetadata?.openSea?.floorPrice} </h4>
+                        {/* <h4>{nft?.contractMetadata?.openSea?.floorPrice} </h4> */}
                     </div>
                     <div className="flex gap-3 flex-col">
                         <p className="text-xs text-gray-400 font-SpaceMono">Token Type</p>
                         {/* <h4 className='font-SpaceMono'>{nft?.contractMetadata.tokenType}</h4> */}
-                    </div>
-                    <div className="flex gap-3 flex-col">
-                        <p className="text-xs text-gray-400 font-SpaceMono">Highest Bid</p>
-                        <h4 className='font-SpaceMono'>0.33 wETH</h4>
                     </div>
                 </div>
             </div>
