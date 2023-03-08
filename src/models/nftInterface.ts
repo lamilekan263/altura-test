@@ -41,7 +41,18 @@ interface INft {
     :
     { name: string, description: string, image: string, external_url: string, },
 
-    error: string | null
+    error: string | null,
+    image_original_url: string,
+    image_preview_url: string,
+    collection: {
+created_date : string
+    },
+    creator: {
+        address: string
+    },
+    description: string | null,
+    permalink: string,
+    name: string
 }
 
 

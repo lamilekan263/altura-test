@@ -10,21 +10,20 @@ interface INftCard {
 
 
 const NftCard = ({ nft, openModal }: INftCard) => {
-
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer  transform transition duration-500 hover:scale-110" onClick={() => openModal(nft)}>
             <div className="h-80">
-                {getFileFormat(nft?.metadata?.image) === ('.mp4' || '.mov') ? (
+
+                {nft?.image_original_url !== null ? ( getFileFormat(nft?.image_original_url) === ('.mp4' || '.mov') ? (
 
                     <ReactPlayerComp
-                        imageUrl={nft?.metadata?.image}
+                        imageUrl={nft?.image_original_url}
                     />
                 ) : (
                     <>
-                        <img className="rounded-t-lg h-full w-full" src={formatImageUrl(nft?.metadata?.image)} alt="" />
+                        <img className="rounded-t-lg h-full w-full" src={formatImageUrl(nft?.image_original_url !== null ? nft?.image_original_url : nft?.image_preview_url)} alt="" />
                     </>
-                )}
-
+                )) : (<img className="rounded-t-lg h-full w-full" src={formatImageUrl(nft?.image_original_url !== null ? nft?.image_original_url : nft?.image_preview_url)} alt="" />)}
             </div>
             <div className="p-5">
                 <a href="#">
@@ -38,7 +37,7 @@ const NftCard = ({ nft, openModal }: INftCard) => {
                     </div>
                     <div className="flex gap-3 flex-col">
                         <p className="text-xs text-gray-400 font-SpaceMono">Token Type</p>
-                        <h4 className='font-SpaceMono'>{nft?.contractMetadata.tokenType}</h4>
+                        {/* <h4 className='font-SpaceMono'>{nft?.contractMetadata.tokenType}</h4> */}
                     </div>
                     <div className="flex gap-3 flex-col">
                         <p className="text-xs text-gray-400 font-SpaceMono">Highest Bid</p>

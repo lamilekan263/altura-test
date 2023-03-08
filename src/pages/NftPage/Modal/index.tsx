@@ -17,7 +17,7 @@ interface IModal {
 
 const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
     const buyNft = () => {
-        window.open(`https://opensea.io/assets/ethereum/${selectedNft?.contract?.address}/${selectedNft?.metadata?.name?.split('#')[1]}`);
+        window.open(selectedNft?.permalink);
     };
 
     const externalUrl = () => {
@@ -63,35 +63,34 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                 <section className="text-gray-700 body-font overflow-hidden text-white">
                                     <div className="container px-5 py-6 mx-auto">
                                         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                                            {getFileFormat(selectedNft?.metadata?.image) === ('.mp4' || '.mov') ? (
-                                                <div className="lg:w-1/2 w-full">
-                                                    <ReactPlayerComp
-                                                        imageUrl={selectedNft?.metadata?.image}
-                                                    />
-                                                </div>
+                                            {selectedNft?.image_original_url !== null ? (getFileFormat(selectedNft?.image_original_url) === ('.mp4' || '.mov') ? (
+
+                                                <ReactPlayerComp
+                                                    imageUrl={selectedNft?.image_original_url}
+                                                />
                                             ) : (
                                                 <>
-                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.metadata?.image)} alt="NFT image" />
-                                                </>
-                                            )}
+                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
 
+                                                </>
+                                            )) : (<img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />)}
                                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                                 <div>
-                                                    <h1 className="text-white text-3xl title-font font-medium ">{selectedNft?.metadata?.name}</h1>
-                                                    <p className="text-sm  title-font text-gray-400 font-SpaceMono">Last Time Updated on:</p>
-                                                    <p className="text-sm  title-font text-gray-400 font-SpaceMono">{formatDate(selectedNft?.timeLastUpdated)}</p>
+                                                    <h1 className="text-white text-3xl title-font font-medium ">{selectedNft?.name}</h1>
+                                                    <p className="text-sm  title-font text-gray-400 font-SpaceMono">Created on:</p>
+                                                    <p className="text-sm  title-font text-gray-400 font-SpaceMono">{formatDate(selectedNft?.collection.created_date)}</p>
                                                 </div>
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Owned By</p>
                                                     <div className="flex gap-3 items-center text-white">
 
-                                                        <p className="text-xs md:text-sm">{selectedNft?.contract.address}</p>
+                                                        <p className="text-xs md:text-sm">{selectedNft?.creator.address}</p>
                                                     </div>
                                                 </div>
                                                 {/* description */}
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Description:</p>
-                                                    <p className=" font-WorkSans">{selectedNft?.metadata?.description}</p>
+                                                    {selectedNft?.description !== null ? (<p className=" font-WorkSans">{selectedNft?.description}</p>) : (<span className="bg-red-100 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">No Description Available</span>)}
                                                 </div>
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Details:</p>
@@ -120,7 +119,7 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                     </div>
                 </div>
             </Dialog>
-        </Transition>
+        </Transition >
     )
 }
 
