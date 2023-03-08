@@ -42,16 +42,20 @@ const NftPage = () => {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
     console.log(state?.nft);
-    
+
     if (state?.nft?.ownedNfts?.length === 0) {
         return (
-            <div className="p-3 h-screen flex items-center justify-center">
-                <h1 className="text-lg md:text-2xl font-SpaceMono">The List  are empty</h1>
+            <div className="p-3 h-screen flex flex-col items-center justify-center">
+                <div className="-mt-64">
+                    <h1 className="text-2xl text-white md:text-2xl lg:text-4xl font-Rajdhani text-center">The List is empty</h1>
+                    <h1 className="text-lg font-light text-white md:text-xl lg:2xl font-Rajdhani text-center">There are no NFT's in this address</h1>
+                </div>
+
             </div>
         )
     }
     return (
-        <div className="p-3 ">
+        <div className="p-3 mt-5 md:mt-10 min-h-screen">
             <NftList currentPosts={currentPosts} openModal={openModal} />
             <Pagination postsPerPage={postsPerPage}
                 totalPosts={state?.nft?.ownedNfts.length}

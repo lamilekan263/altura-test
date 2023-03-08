@@ -24,7 +24,7 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
         window.open(selectedNft?.metadata?.external_url);
 
     };
-    
+
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -64,16 +64,17 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                     <div className="container px-5 py-6 mx-auto">
                                         <div className="lg:w-4/5 mx-auto flex flex-wrap">
                                             {getFileFormat(selectedNft?.metadata?.image) === ('.mp4' || '.mov') ? (
-
-                                                <ReactPlayerComp
-                                                    imageUrl={selectedNft?.metadata?.image}
-                                                />
+                                                <div className="lg:w-1/2 w-full">
+                                                    <ReactPlayerComp
+                                                        imageUrl={selectedNft?.metadata?.image}
+                                                    />
+                                                </div>
                                             ) : (
                                                 <>
-                                                        <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.metadata?.image)} alt="NFT image" />
+                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.metadata?.image)} alt="NFT image" />
                                                 </>
                                             )}
-                                           
+
                                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                                 <div>
                                                     <h1 className="text-white text-3xl title-font font-medium ">{selectedNft?.metadata?.name}</h1>
@@ -83,8 +84,8 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Owned By</p>
                                                     <div className="flex gap-3 items-center text-white">
-                                                       
-                                                        <p className="text-xs md:text-sm">{selectedNft?.contract.address }</p>
+
+                                                        <p className="text-xs md:text-sm">{selectedNft?.contract.address}</p>
                                                     </div>
                                                 </div>
                                                 {/* description */}
