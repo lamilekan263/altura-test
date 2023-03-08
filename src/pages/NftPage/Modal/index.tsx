@@ -62,19 +62,19 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                 </Dialog.Title>
                                 <section className="text-gray-700 body-font overflow-hidden text-white">
                                     <div className="container px-5 py-6 mx-auto">
-                                        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                                            <div>
+                                        <div className="lg:w-4/5 mx-auto flex flex-col md:flex-row">
+                                            <div className='w-full '>
                                             {selectedNft?.image_original_url !== null ? (getFileFormat(selectedNft?.image_original_url) === ('.mp4' || '.mov') ? (
                                                 <ReactPlayerComp
                                                     imageUrl={selectedNft?.image_original_url}
                                                 />
                                             ) : (
                                                 <>
-                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
+                                                            <img className="lg:w-1/2 h-full w-full object-cover object-center rounded border border-gray-200 " src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
                                                 </>
                                             )) :
                                                 (
-                                                    <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
+                                                        <img className="lg:w-1/2 h-full w-full object-cover object-center rounded border border-gray-200 " src={formatImageUrl(selectedNft?.image_original_url !== null ? selectedNft?.image_original_url : selectedNft?.image_preview_url)} alt="NFT image" />
                                                     )}
                                             </div>
                                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -93,7 +93,7 @@ const Modal = ({ closeModal, isOpen, selectedNft }: IModal) => {
                                                 {/* description */}
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Description:</p>
-                                                    {selectedNft?.description !== null ? (<p className=" font-WorkSans">{selectedNft?.description}</p>) : (<span className="bg-red-100 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">No Description Available</span>)}
+                                                    {selectedNft?.description !== null ? (<p className=" font-WorkSans text-clip">{selectedNft?.description.slice(0, 200) + "..."}</p>) : (<span className="bg-red-100 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">No Description Available</span>)}
                                                 </div>
                                                 <div className="mt-5">
                                                     <p className="text-sm  title-font text-gray-400 tracking-widest font-SpaceMono">Details:</p>
